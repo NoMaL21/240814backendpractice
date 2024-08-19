@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.dto.TestRequestBodyDTO;
+
+import org.springframework.web.bind.annotation.RequestBody;
+
 @RestController
 @RequestMapping("test")
 public class TestController {
@@ -29,4 +33,10 @@ public class TestController {
 	    }
 	    return "Hello World! ID param " + id;
 	}
+	
+	@GetMapping("/testRequestBody")
+	public String testControllerRequestBody(@RequestBody TestRequestBodyDTO testRequestBodyDTO) {
+		return "Hello World! \nID :"+testRequestBodyDTO.getId()+" \nMessage : "+ testRequestBodyDTO.getMessage();
+	}
+	
 }
