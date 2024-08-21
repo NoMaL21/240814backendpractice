@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+
+
 
 import com.example.demo.dto.TestRequestBodyDTO;
 import com.example.demo.dto.ResponseDTO;
-
 
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -53,4 +55,23 @@ public class TestController {
 		ResponseDTO<String> response = ResponseDTO.<String>builder().data(list).build();
 		return response;
 	}
+	
+	@GetMapping("/testResponseEntityOk")
+	public ResponseEntity<?>testControllerResponseEntityOk(){
+		List<String> list = new ArrayList<String>();
+		list.add("This is ResponseEntity, code 200");
+		list.add("See you!");
+		ResponseDTO<String> response = ResponseDTO.<String>builder().data(list).build();
+		return ResponseEntity.ok().body(response);
+	}
+	
+	@GetMapping("/testResponseEntityBad")
+	public ResponseEntity<?>testControllerResponseEntityBad(){
+		List<String> list = new ArrayList<String>();
+		list.add("This is ResponseEntity. code 400");
+		list.add("See you!");
+		ResponseDTO<String> response = ResponseDTO.<String>builder().data(list).build();
+		return ResponseEntity.badRequest().body(response);
+	}
+	
 }
