@@ -23,7 +23,7 @@ public class TodoEntity {
 	@GeneratedValue(generator="system-uuid")
 	@UuidGenerator(style = UuidGenerator.Style.TIME)
 	private String id;
-	private String Userid;
+	private String userId;
 	private String title;
 	private boolean done;
 	
