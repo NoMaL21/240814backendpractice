@@ -29,7 +29,9 @@ public class TodoService {
 		/*TodoEntity savedEntity = repository.findById(entity.getId()).get();
 		return savedEntity.getTitle();
 		*/
-		TodoEntity savedEntity = repository.findByUserId(entity.getUserId()).get(0);
+		//TodoEntity savedEntity = repository.findByUserId(entity.getUserId()).get(0);
+		
+		TodoEntity savedEntity = repository.searchByUserId(entity.getUserId()).get(0);
 		return savedEntity.getUserId();
 	}
 }

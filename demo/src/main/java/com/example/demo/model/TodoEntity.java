@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.NamedQuery;
 
 import org.hibernate.annotations.UuidGenerator;
 
@@ -18,6 +19,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "Todo")
+@NamedQuery(name="TodoRepository.searchByUserId",
+		query = "select t from TodoEntity t where t.userId = ?1")
 public class TodoEntity {
 	@Id
 	@GeneratedValue(generator="system-uuid")
